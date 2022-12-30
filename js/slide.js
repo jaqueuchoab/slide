@@ -10,25 +10,28 @@ export default class Slide {
   }
 
   onMove(event) {
+    console.log('aaaa');
   }
 
-  onEndMove() {
-     this.slideWrapper.removeEventListener('mousemove', this.onMove);
+  onEnd(event) {
+    console.log('bbbb');
+    this.slideWrapper.removeEventListener('mousemove', this.onMove)
   }
 
-  addSlideEvents() {
-     this.slideWrapper.addEventListener('mousedown', this.onStart);
-     this.slideWrapper.addEventListener('mouseup', this.onEndMove);
+  addEventSlide() {
+    this.slideWrapper.addEventListener('mousedown', this.onStart);
+    this.slideWrapper.addEventListener('mouseup', this.onEnd);
   }
 
   bindEvents() {
-     this.onStart = this.onStart.bind(this);
-     this.onMove = this.onMove.bind(this);
-     this.onEndMove = this.onEndMove.bind(this);
+    this.onStart = this.onStart.bind(this);
+    this.onMove = this.onMove.bind(this);
+    this.onEnd = this.onEnd.bind(this);
   }
 
   init() {
-     this.bindEvents();
-     this.addSlideEvents();
+    this.bindEvents();
+    this.addEventSlide();
+    return this;
   }
 }

@@ -27,3 +27,7 @@ img {
 .slide-wrapper {
      overflow: hidden;
 }
+
+.slide {
+     transform: translate3d(-500px, 0px, 0px);
+}

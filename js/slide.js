@@ -21,10 +21,16 @@ export default class Slide {
   }
 
   onStart(event) {
-    event.preventDefault();
-    // O clientX é uma propriedade de leitura da interface MouseEvent que fornece as coordenadas horizontais dentro da área do aplicativo
-    this.dist.startX = event.clientX;
+    if (event.type === 'mousedown') {
+      event.preventDefault();
+      // O clientX é uma propriedade de leitura da interface MouseEvent que fornece as coordenadas horizontais dentro da área do aplicativo
+      this.dist.startX = event.clientX;
+    } else {
+      this.dist.startX = event.changedsTouches[0].clientX;
+    }
+  
     this.slideWrapper.addEventListener('mousemove', this.onMove);
+    this.slideWrapper.addEventListener('touchmove', this.onMove);
   }
 
   onMove(event) {
@@ -33,13 +39,16 @@ export default class Slide {
   }
 
   onEnd(event) {
-    this.slideWrapper.removeEventListener('mousemove', this.onMove)
+    this.slideWrapper.removeEventListener('mousemove', this.onMove);
+    this.slideWrapper.removeEventListener('touchmove', this.onMove);
     this.dist.finalPosition = this.dist.movePosition;
   }
 
   addEventSlide() {
     this.slideWrapper.addEventListener('mousedown', this.onStart);
+    this.slideWrapper.addEventListener('toushstart', this.onStart);
     this.slideWrapper.addEventListener('mouseup', this.onEnd);
+    this.slideWrapper.addEventListener('touchend', this.onEnd);
   }
 
   bindEvents() {

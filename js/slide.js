@@ -10,11 +10,9 @@ export default class Slide {
   }
 
   onMove(event) {
-    console.log('aaaa');
   }
 
   onEnd(event) {
-    console.log('bbbb');
     this.slideWrapper.removeEventListener('mousemove', this.onMove)
   }
 

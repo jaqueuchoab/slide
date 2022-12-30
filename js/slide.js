@@ -39,7 +39,7 @@ export default class Slide {
 
   addEventSlide() {
     this.slideWrapper.addEventListener('mousedown', this.onStart);
-    this.slideWrapper.addEventListener('mouseleave', this.onEnd);
+    this.slideWrapper.addEventListener('mouseup', this.onEnd);
   }
 
   bindEvents() {

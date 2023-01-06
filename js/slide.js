@@ -90,7 +90,6 @@ export class Slide {
       const position = this.slidePosition(element);
       return { element, position };
     });
-    console.log(this.slideArray);
   }
 
   slidesIndexNav(index) {
@@ -163,7 +162,7 @@ export class Slide {
   }
 }
 
-export class SlideNav extends Slide {
+export default class SlideNav extends Slide {
   constructor(slide, wrapper) {
     // uso da palavra reservada 'super' para puxar os dados do constructor da classe pai/extendida
     super(slide, wrapper);
